@@ -7,7 +7,7 @@ from src.interface.dtos import (
 )
 from src.application.shared_list import SharedListUseCases
 from src.interface.dependencies import get_shared_list_usecase
-from domain.models import SharedList
+from src.domain.models import SharedList
 
 router = APIRouter(prefix="/lists", tags=["Shared Lists"])
 

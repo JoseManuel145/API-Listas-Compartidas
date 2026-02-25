@@ -7,7 +7,7 @@ from src.interface.dtos import (
 )
 from src.application.product import ProductsUseCases
 from src.interface.dependencies import get_products_usecase
-from domain.models import Product
+from src.domain.models import Product
 from src.Infrastructure.db.websocket_manager import manager
 
 router = APIRouter(prefix="/products", tags=["Products"])

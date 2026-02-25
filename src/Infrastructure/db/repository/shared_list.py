@@ -2,8 +2,8 @@ from typing import Optional
 from uuid import UUID
 from sqlalchemy.orm import Session
 
-from domain.models import SharedList
-from domain.ports import SharedListsPort
+from src.domain.models import SharedList
+from src.domain.ports import SharedListsPort
 from src.Infrastructure.db.tables.shared_list import SharedListTable
 
 

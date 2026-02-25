@@ -1,5 +1,5 @@
 from src.domain.ports import SharedListsPort
-from domain.models import SharedList
+from src.domain.models import SharedList
 from datetime import datetime
 from typing import Optional
 from uuid import UUID, uuid4

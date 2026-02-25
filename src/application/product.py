@@ -1,5 +1,5 @@
 from src.domain.ports import ProductsPort
-from domain.models import Product
+from src.domain.models import Product
 from typing import Optional
 from uuid import UUID, uuid4
 from datetime import datetime

@@ -1,7 +1,7 @@
 from typing import Optional, Protocol
 from uuid import UUID
 
-from domain.models import Product, SharedList
+from src.domain.models import Product, SharedList
 
 class ProductsPort(Protocol):
     def get_all_products(self) -> list[Product]: ...

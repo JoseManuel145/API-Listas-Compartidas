@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(255) NOT NULL,
     quantity INT NOT NULL,
     status VARCHAR(20) NOT NULL,
-    created_by CHAR(36) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     FOREIGN KEY (list_id) REFERENCES shared_lists(id)
 );

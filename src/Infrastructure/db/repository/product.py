@@ -1,9 +1,9 @@
 from src.Infrastructure.db.tables.shared_list import SharedListTable
 from src.Infrastructure.db.tables.product import ProductTable
-from domain.enums import ProductStatus
-from domain.ports import ProductsPort
+from src.domain.enums import ProductStatus
+from src.domain.ports import ProductsPort
 from sqlalchemy.orm import Session
-from domain.models import Product
+from src.domain.models import Product
 from typing import Optional
 from uuid import UUID
 
@@ -54,7 +54,7 @@ class ProductRepository(ProductsPort):
         table.list_id = str(product.list_id)
         table.name = product.name
         table.quantity = product.quantity
-        table.status = product.status.value
+        table.status = product.status
         table.created_at = product.created_at
         
         self.session.commit()
@@ -76,6 +76,8 @@ class ProductRepository(ProductsPort):
     
     def _to_domain(self, table: ProductTable) -> Product:
         """Convertir de tabla a modelo de dominio"""
+        if table.status is not "PENDING" or table.status is not "BOUGHT" or table.status is not "NOT_FOUND":
+            table.status = "PENDING"
         return Product(
             id=UUID(table.id),
             list_id=UUID(table.list_id),
@@ -92,6 +94,6 @@ class ProductRepository(ProductsPort):
             list_id=str(product.list_id),
             name=product.name,
             quantity=product.quantity,
-            status=product.status.value,
+            status=product.status,
             created_at=product.created_at
         )
