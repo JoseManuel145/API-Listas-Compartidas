@@ -39,7 +39,6 @@ async def create_product(
     )
     created = usecase.create_product(product)
     
-   
     products = usecase.get_products_by_list(data.list_id)
     await manager.broadcast(
         data.list_id,
@@ -82,8 +81,10 @@ async def update_product_status(
     status: str,
     usecase: ProductsUseCases = Depends(get_products_usecase)
 ):
+    print(f"Updating product {product_id} status to {status}")
     try:
         existing_product = usecase.get_product(product_id)
+        print(f"Existing product: {existing_product} with status {existing_product.status}")
         updated_product = Product(
             id=existing_product.id,
             list_id=existing_product.list_id,
