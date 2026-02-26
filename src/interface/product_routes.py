@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from uuid import UUID
+from src.domain.enums import ProductStatus
 from src.interface.dtos import ProductCreate, ProductResponse
 from src.application.product import ProductsUseCases
 from src.interface.dependencies import get_products_usecase
@@ -78,7 +79,7 @@ async def update_product(
 @router.patch("/{product_id}/status", response_model=ProductResponse)
 async def update_product_status(
     product_id: UUID,
-    status: str,
+    status: ProductStatus,
     usecase: ProductsUseCases = Depends(get_products_usecase)
 ):
     print(f"Updating product {product_id} status to {status}")
