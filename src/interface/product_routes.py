@@ -86,15 +86,7 @@ async def update_product_status(
     try:
         existing_product = usecase.get_product(product_id)
         print(f"Existing product: {existing_product} with status {existing_product.status}")
-        updated_product = Product(
-            id=existing_product.id,
-            list_id=existing_product.list_id,
-            name=existing_product.name,
-            quantity=existing_product.quantity,
-            status=status,
-            created_at=existing_product.created_at
-        )
-        updated = usecase.update_product(product_id, updated_product)
+        updated = usecase.update_product_status(product_id, status=status)
 
         products = usecase.get_products_by_list(existing_product.list_id)
         await manager.broadcast(

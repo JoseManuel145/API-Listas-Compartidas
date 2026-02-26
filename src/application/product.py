@@ -46,6 +46,18 @@ class ProductsUseCases:
             created_at=existing_product.created_at
         )
         return self.products_port.update_product(product_id, product)
+    
+    def update_product_status(self, product_id: UUID, status: str) -> Product:
+        existing_product = self.get_product(product_id)
+        product = Product(
+            id=existing_product.id,
+            list_id=existing_product.list_id,
+            name=existing_product.name,
+            quantity=existing_product.quantity,
+            status=status,
+            created_at=existing_product.created_at
+        )
+        return self.products_port.update_product(product_id, product)
 
     def delete_product(self, product_id: UUID) -> bool:
         return self.products_port.delete_product(product_id)
