@@ -194,7 +194,7 @@ class ProductRepository(ProductsPort):
     def _to_domain(self, table: ProductTable) -> Product:
         """Convertir de tabla a modelo de dominio"""
         # Validamos que el status sea uno de los permitidos
-        valid_statuses = ["PENDING", "BOUGHT", "DELETED"]
+        valid_statuses = ["PENDING", "BOUGHT", "NOT_FOUND"]
         status_str = table.status if table.status in valid_statuses else "PENDING"
         
         return Product(
