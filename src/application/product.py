@@ -19,9 +19,8 @@ class ProductsUseCases:
 
     def get_products_by_list(self, list_id: UUID) -> list[Product]:
         """Obtener todos los productos de una lista compartida"""
+        # Debe haber 8 espacios antes de 'products' si la clase ya tiene 4
         products = self.products_port.get_products_by_list(list_id)
-        if not products:
-            raise ValueError(f"No products found for list {list_id}")
         return products
     
     def create_product(self, product: Product) -> Product:
@@ -30,7 +29,7 @@ class ProductsUseCases:
             list_id=product.list_id,
             name=product.name,
             quantity=product.quantity,
-            status=product.status, # pendiente, comprado, no encontrado
+            status=product.status, 
             created_at=datetime.now()
         )
         return self.products_port.create_product(product)
