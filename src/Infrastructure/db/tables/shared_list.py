@@ -9,4 +9,9 @@ class SharedListTable(Base):
     name = Column(String(255), nullable=False)
     created_at = Column(DateTime(timezone=False), nullable=False)
 
-    productos = relationship("ProductTable", back_populates="lista")
+    
+    productos = relationship(
+        "ProductTable", 
+        back_populates="lista",
+        cascade="all, delete-orphan"
+    )

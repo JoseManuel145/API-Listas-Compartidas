@@ -19,7 +19,7 @@ class ProductsUseCases:
 
     def get_products_by_list(self, list_id: UUID) -> list[Product]:
         """Obtener todos los productos de una lista compartida"""
-        # Debe haber 8 espacios antes de 'products' si la clase ya tiene 4
+
         products = self.products_port.get_products_by_list(list_id)
         return products
     
